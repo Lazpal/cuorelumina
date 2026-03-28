@@ -1028,17 +1028,15 @@ dialog::backdrop {
   border: none;
   cursor: pointer;
   padding: 0.2rem;
+  width: 2rem;
+  height: 2rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .modal-close:hover {
-  color: var(--primary-accent);
-}
-
-.qr-container {
-  background: var(--surface-strong);
-  border-radius: 12px;
-  display: inline-block;
-  margin: 1rem 0;
+  color: var(--text);
 }
 
 .qr-code {
@@ -1070,7 +1068,7 @@ dialog::backdrop {
   background: var(--surface-strong);
   border: 1px solid var(--line);
   color: var(--text);
-  font-family: inherit; /* Inherit font-family for buttons */
+  font-family: inherit;
   font-size: 0.85rem;
   cursor: pointer;
   text-decoration: none;
@@ -1081,6 +1079,60 @@ dialog::backdrop {
   background: var(--secondary-accent);
   border-color: var(--primary-accent);
   color: #fff;
+}
+
+/* Under Construction Stripe - Full Width */
+.under-construction-stripe {
+  position: fixed;
+  left: 0;
+  right: 0;
+  width: 100vw;
+  margin: 0;
+  padding: 0;
+  background: #1a1a1a;
+  color: #fff;
+  text-align: center;
+  padding: 0.15rem 0;
+  font-weight: 600;
+  font-size: 0.65rem;
+  letter-spacing: 0.05em;
+  z-index: 9999;
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.3);
+  overflow: hidden;
+  white-space: nowrap;
+}
+
+.under-construction-top {
+  top: 0;
+}
+
+.under-construction-bottom {
+  bottom: 0;
+}
+
+.under-construction-stripe p {
+  margin: 0;
+  padding: 0 0.5rem;
+  min-width: 100%;
+  display: block;
+  animation: stripe-pulse 2s ease-in-out infinite;
+}
+
+@keyframes stripe-pulse {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.7; }
+}
+
+@media (max-width: 640px) {
+  .under-construction-stripe {
+    font-size: 0.6rem;
+    letter-spacing: 0.03em;
+    padding: 0.12rem 0;
+  }
+
+  .under-construction-stripe p {
+    padding: 0 0.35rem;
+  }
 }
 
 /* --- Carousel --- */
