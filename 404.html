@@ -1,0 +1,89 @@
+<!doctype html>
+<html lang="el">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>404 - Page Not Found | Cuore Lumina</title>
+    
+    <!-- Favicon & Icons -->
+    <link rel="icon" type="image/x-icon" href="imgs/favicon_io/favicon.ico">
+    <link rel="apple-touch-icon" sizes="180x180" href="imgs/favicon_io/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="imgs/favicon_io/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="imgs/favicon_io/favicon-16x16.png">
+    <link rel="manifest" href="imgs/favicon_io/site.webmanifest">
+
+    <!-- SEO & Social Meta Tags -->
+    <meta name="robots" content="noindex, follow">
+    <meta name="description" content="Η σελίδα που ψάχνετε δεν βρέθηκε." />
+    <meta name="theme-color" content="#f9f5f0" />
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Sora:wght@400;500;600;700;800&family=Plus+Jakarta+Sans:wght@500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css" />
+    <script defer src="script.js"></script>
+  </head>
+  <body>
+    <!-- Loading Screen -->
+    <div id="loader" class="loader-overlay">
+      <div class="spinner-container">
+        <img src="imgs/cuore lumina.png" alt="Loading..." class="spinner-logo">
+        <div class="spinner-ring"></div>
+      </div>
+    </div>
+
+    <div class="background" aria-hidden="true"></div>
+    <main class="page" style="min-height: 90vh; display: flex; flex-direction: column; justify-content: center;">
+      <section class="profile" data-aos="fade-down" data-aos-duration="1000" style="margin: auto 0;">
+        
+        <div class="profile-header">
+          <a href="index.html"><img src="imgs/cuore lumina.png" alt="Cuore Lumina Logo" class="profile-logo" width="96" height="96"></a>
+          <div>
+            <h1 style="font-size: 4rem; margin-bottom: 0;">404</h1>
+            <p class="eyebrow" style="margin-top: 0.5rem; color: var(--text-secondary);">
+              Page Not Found
+            </p>
+          </div>
+        </div>
+        
+        <p class="intro" style="margin-bottom: 2rem;">
+          Ωχ! Φαίνεται ότι η σελίδα που ψάχνετε δεν υπάρχει ή έχει μετακινηθεί.
+        </p>
+
+        <a class="card" href="index.html">
+          <div class="card-content">
+            <h2 class="card-title"><i class="fa-solid fa-house" style="margin-right: 8px;"></i> Επιστροφή στην Αρχική</h2>
+          </div>
+          <div class="arrow-icon">
+            <i class="fa-solid fa-arrow-right"></i>
+          </div>
+        </a>
+      </section>
+        <img src="imgs/219f5abedfc7fcef9a69c03b7e88f12a.png" alt="">
+
+      <footer class="footer reveal-up" style="margin-top: auto; padding-bottom: 1rem;">
+        <p>© <span id="year"></span> Cuore Lumina</p>
+        <div class="developer-signature">
+            <i class="fas fa-project-diagram"></i>  Designed & Developed by <a href="https://github.com/Lazpal" target="_blank" rel="noopener noreferrer">Lazaros Pal</a>
+        </div>
+      </footer>
+    </main>
+
+    <!-- AOS Animation Library -->
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    
+    <script>
+      // Initialize AOS
+      AOS.init({
+        duration: 800,
+        once: true,
+        offset: 50
+      });
+    </script>
+  </body>
+</html>

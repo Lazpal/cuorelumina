@@ -1,0 +1,1175 @@
+:root {
+  /* Cuore Lumina Theme - Warm & Natural */
+  --bg: #fdfbf7; /* Very light warm beige/cream */
+  --surface: #ffffff;
+  --surface-strong: #f4efe9;
+  --text: #3c3836; /* Warm dark grey/brown */
+  --muted: #96908a;
+  --line: #e8e0d5;
+
+  /* Brand Accents */
+  --primary-accent: #cc7a50; /* Terracotta / Warm Clay */
+  --secondary-accent: #e6b89c; /* Soft Peach / Light Clay */
+  --glow-color: rgba(204, 122, 80, 0.4);
+  
+  --vendora: #28c2a0;
+  --vinted: #007782;
+  --etsy: #f46b2d;
+  --instagram: #E1306C;
+  --telegram: #0088cc;
+  --whatsapp: #25D366;
+  --viber: #7360f2;
+  --phone: #555555;
+
+  --radius-lg: 24px;
+  --radius-md: 16px;
+  --max-width: 580px;
+
+  --shadow-sm: 0 4px 20px rgba(204, 122, 80, 0.06);
+  --shadow-lg: 0 10px 40px rgba(204, 122, 80, 0.12);
+  --transition-normal: 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+* {
+  box-sizing: border-box;
+}
+
+::selection {
+  background: rgba(204, 122, 80, 0.2);
+  color: var(--text);
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--bg);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--secondary-accent);
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--primary-accent);
+}
+
+html,
+body {
+  margin: 0;
+  min-height: 100%;
+}
+
+body {
+  margin: 0;
+  min-height: 100%;
+  color: var(--text);
+  font-family: "Sora", "Segoe UI", sans-serif;
+  background: var(--bg);
+  line-height: 1.5;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+  overflow-x: hidden;
+  /* Removed animation: fadeIn from body to prevent loader from fading */
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
+    transition: var(--transition-normal);
+}
+
+a:hover {
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-lg);
+    color: var(--text); 
+}
+
+/* Animated underline for Card Titles and Chip links */
+.card strong,
+.chips a span {
+  position: relative;
+  display: inline-block;
+  width: fit-content; /* Ensure underline only spans the text width, not the flex/grid item width */
+}
+
+.card strong::after,
+.chips a span::after {
+  content: '';
+  position: absolute;
+  width: 0;
+  height: 2px;
+  bottom: -2px;
+  left: 0;
+  background: var(--text);
+  transition: width 0.3s ease;
+}
+
+.card:hover strong::after,
+.chips a:hover span::after {
+  width: 100%;
+}
+
+ul {
+    list-style: none;
+}
+
+button {
+    border: none;
+    background: none;
+    cursor: pointer;
+    font-family: inherit;
+}
+
+
+/* Body Animation on Load */
+body {
+  margin: 0;
+  font-family: "Sora", "Segoe UI", sans-serif;
+  line-height: 1.5;
+  background-color: var(--bg);
+  color: var(--text);
+  overflow-x: hidden;
+  /* animation: fadeIn 1.2s ease-out; REMOVED to keep loader visible */
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; filter: blur(4px); }
+  to { opacity: 1; filter: blur(0); }
+}
+
+.background {
+  position: fixed;
+  inset: 0;
+  z-index: -1;
+  background:
+    /* New Light Pink from Bottom Left */
+    radial-gradient(circle at 0% 100%, rgba(255, 192, 203, 0.35), transparent 55%),
+    
+    /* Existing Warm Gradients */
+    radial-gradient(circle at 10% 20%, rgba(204, 122, 80, 0.08), transparent 40%),
+    radial-gradient(circle at 90% 80%, rgba(230, 184, 156, 0.1), transparent 40%),
+    
+    /* Base */
+    linear-gradient(135deg, #fdfbf7 0%, #ffffff 100%);
+  will-change: transform;
+}
+
+/* @keyframes bgPulse removed */
+
+.page {
+  animation: fadeIn 1.2s ease-out; /* Moved fade in here so loader stays visible */
+  width: min(var(--max-width), calc(100% - 2rem));
+  margin-inline: auto;
+  padding: 3.6rem 0 2.2rem;
+  /* Removed conflicts with AOS animation */
+}
+/*
+@keyframes slideUpFade {
+  from { 
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+*/
+
+.profile {
+  position: relative; /* Added for share button positioning */
+  padding: 1.2rem;
+  /* Push the profile down to make room for the floating logo */
+  margin-top: 4.5rem; 
+  border: 1px solid var(--line);
+  border-radius: var(--radius-lg);
+  /* Light theme glassmorphism */
+  background: rgba(255, 255, 255, 0.65);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  box-shadow: var(--shadow-sm);
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  /* Ensure the logo can pop out of the top */
+  overflow: visible;
+  transition: transform 0.4s ease, box-shadow 0.4s ease;
+}
+
+.profile:hover {
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-lg);
+}
+
+.profile-header {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  gap: 1rem;
+}
+
+.profile-logo {
+  width: 130px;
+  height: 130px;
+  border-radius: 50%; /* Circle shape */
+  /* Pull the logo up outside the box */
+  margin-top: -85px; 
+  /* Create a "cutout" effect by matching the body background */
+  border: 6px solid var(--bg); 
+  background: var(--surface);
+  object-fit: contain; /* Ensure logo fits well */
+  flex-shrink: 0;
+  /* Warmer shadow */
+  box-shadow: 0 10px 40px rgba(230, 184, 156, 0.2), 
+              0 0 20px rgba(204, 122, 80, 0.1); 
+  transition: transform 0.5s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+.profile:hover .profile-logo {
+  transform: scale(1.05) rotate(3deg);
+}
+
+.highlight-box {
+  display: inline-block;
+  margin-top: 0.8em;
+  padding: 0.6em 1em;
+  border-radius: 8px;
+  background: rgba(204, 122, 80, 0.06); /* Faint terracotta */
+  border: 1px solid rgba(204, 122, 80, 0.2);
+  color: #a85d38; /* Darker terracotta text */
+  font-size: 0.8rem;
+  font-weight: 600;
+  transition: all 0.3s ease;
+}
+
+.highlight-box:hover {
+  background: rgba(204, 122, 80, 0.12);
+  transform: scale(1.02);
+}
+
+.img-logo {
+   transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.card:hover .img-logo {
+   transform: scale(1.15) rotate(-5deg);
+   animation: none; /* Disable old floatBounce on hover for snappier feel */
+}
+
+.badge {
+  position: absolute;
+  top: 8px;
+  right: 8px;
+  left: auto;
+  font-size: 0.55rem;
+  font-weight: 700;
+  padding: 2px 6px;
+  border-radius: 4px;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  z-index: 2;
+  /* Default fallback */
+  background: var(--muted);
+  color: #fff;
+}
+
+.badge.vendora {
+  background: rgba(40, 194, 160, 0.15);
+  color: #1a8c73;
+  border: 1px solid rgba(40, 194, 160, 0.3);
+}
+
+.badge.vinted {
+  background: rgba(0, 119, 130, 0.15);
+  color: #005f68;
+  border: 1px solid rgba(0, 119, 130, 0.3);
+}
+
+.badge.etsy {
+  background: rgba(244, 107, 45, 0.15);
+  color: #c74d1a;
+  border: 1px solid rgba(244, 107, 45, 0.3);
+}
+
+.badge.instagram {
+  background: rgba(255, 65, 109, 0.15);
+  color: #cc2348;
+  border: 1px solid rgba(255, 65, 109, 0.3);
+}
+
+.badge.telegram {
+  background: rgba(34, 158, 217, 0.15);
+  color: #166da0;
+  border: 1px solid rgba(34, 158, 217, 0.3);
+}
+
+.badge.whatsapp {
+  background: rgba(37, 211, 102, 0.15);
+  color: #1a9246;
+  border: 1px solid rgba(37, 211, 102, 0.3);
+}
+
+.badge.viber {
+  background: rgba(115, 96, 242, 0.15);
+  color: #5c4cc2;
+  border: 1px solid rgba(115, 96, 242, 0.3);
+}
+
+.badge.phone {
+  background: rgba(85, 85, 85, 0.15);
+  color: #4a4a4a;
+  border: 1px solid rgba(85, 85, 85, 0.3);
+}
+
+.card {
+  position: relative;
+  display: flex;
+  align-items: center;
+  gap: 1.2rem;
+  padding: 1.2rem;
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-radius: var(--radius-md);
+  text-decoration: none;
+  color: var(--text);
+  font-weight: 500;
+  overflow: hidden;
+  transition: transform 0.3s cubic-bezier(0.2, 0.8, 0.2, 1), background-color 0.3s ease, border-color 0.3s ease;
+}
+
+.card:active {
+  transform: scale(0.98);
+}
+
+
+.eyebrow {
+  margin: 0 0 0.4rem;
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  color: var(--muted);
+  display: flex;
+  align-items: center;
+  justify-content: center; /* Center the dot and text */
+  gap: 0.5rem;
+  font-weight: 600;
+}
+
+.status-dot {
+  width: 8px;
+  height: 8px;
+  background: #28c2a0; /* Vendora green for "Available" */
+  border-radius: 50%;
+  box-shadow: 0 0 0 2px rgba(40, 194, 160, 0.2);
+  animation: statusPulse 2s infinite;
+}
+
+h1 {
+  margin: 0; /* Let flex gap handle spacing */
+  font-size: clamp(1.4rem, 1.2rem + 2vw, 2rem);
+  line-height: 1.2;
+  color: var(--text);
+  font-weight: 700;
+}
+
+.intro {
+  margin: 0 auto; /* Center horizontally */
+  text-align: center; /* Center text */
+  color: var(--text);
+  font-size: 0.97rem;
+  max-width: 60ch;
+  opacity: 0.9;
+}
+
+.cta-row {
+  display: flex;
+  justify-content: center; /* Center buttons */
+  flex-wrap: wrap;
+  gap: 0.6rem;
+  margin-top: 1rem;
+}
+
+.cta {
+  text-decoration: none;
+  border-radius: 12px;
+  padding: 0.62rem 0.88rem;
+  font-size: 0.84rem;
+  font-weight: 600;
+  letter-spacing: 0.01em;
+  border: 1px solid transparent;
+  transition: transform 150ms ease, border-color 150ms ease, background-color 150ms ease;
+  position: relative;
+  overflow: hidden;
+}
+
+.cta.primary {
+  color: #fff;
+  background: var(--primary-accent);
+  border-color: transparent;
+  box-shadow: 0 4px 15px var(--glow-color);
+  animation: btnPulse 3s infinite;
+}
+
+/* Shine effect from indias.css */
+.cta.primary::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(120deg, transparent, rgba(255, 255, 255, 0.4), transparent);
+  transition: all 0.6s;
+}
+
+.cta:hover::before {
+  left: 100%;
+}
+
+.cta.secondary {
+  color: var(--text);
+  background: rgba(0, 0, 0, 0.03); /* Subtle dark for light theme */
+  border: 1px solid var(--line);
+}
+
+.cta:hover,
+.cta:focus-visible {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+}
+
+
+.cta.primary:hover,
+.cta.primary:focus-visible {
+  background: #bf6a40; /* Warmer terracotta on hover */
+}
+
+.cta.secondary:hover,
+.cta.secondary:focus-visible {
+  border-color: var(--secondary-accent);
+  background: rgba(0, 0, 0, 0.05);
+}
+
+.chips {
+  display: flex; /* Kept for legacy if needed, but new marquee uses different class */
+  flex-wrap: wrap;
+  gap: 0.55rem;
+  margin-top: 1rem;
+}
+
+.chips span {
+  border: 1px solid var(--line);
+  border-radius: 999px;
+  padding: 0.42rem 0.72rem;
+  font-size: 0.79rem;
+  color: var(--muted);
+  background: rgba(255, 255, 255, 0.01);
+}
+
+/* Marquee Styles */
+.marquee-container {
+  width: 100%;
+  overflow: hidden;
+  margin-top: 1rem; /* Reduced from 1.5rem */
+  mask-image: linear-gradient(to right, transparent, black 10%, black 90%, transparent);
+  -webkit-mask-image: linear-gradient(to right, transparent, black 10%, black 90%, transparent);
+}
+
+.marquee-track {
+  display: flex;
+  gap: 1.5rem;
+  width: max-content;
+  animation: marquee 20s linear infinite;
+}
+
+.marquee-track-reverse {
+  display: flex;
+  gap: 1.5rem;
+  width: max-content;
+  animation: marquee-reverse 20s linear infinite;
+}
+
+/* Pause on hover so users can read/click */
+.marquee-container:hover .marquee-track,
+.marquee-container:hover .marquee-track-reverse {
+  animation-play-state: paused;
+}
+
+.marquee-img {
+  height: 180px; /* Fixed height for consistency */
+  width: auto;
+  border-radius: var(--radius-md);
+  /* box-shadow: var(--shadow-sm); REMOVED */
+  transition: transform 0.3s ease;
+  object-fit: cover;
+  aspect-ratio: 1/1; /* Square images like instagram */
+}
+
+.marquee-img:hover {
+  transform: scale(1.05);
+  /* box-shadow: var(--shadow-lg); REMOVED */
+}
+
+.chip {
+  display: inline-flex;
+  border: 1px solid var(--line);
+  border-radius: 999px;
+  padding: 0.42rem 0.82rem;
+  font-size: 0.82rem;
+  color: var(--text);
+  background: rgba(255, 255, 255, 0.5); /* Semi-transparent white */
+  white-space: nowrap;
+  backdrop-filter: blur(4px);
+}
+
+.chip-link {
+    text-decoration: none;
+    color: inherit;
+    display: inline-flex;
+}
+
+@keyframes marquee {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    /* Move by -50% because the track contains 2 sets of items. 
+       Need to calculate exact width or rely on half the track width if items are identical.
+       Since we don't know the exact pixel width, assuming the content is duplicated exactly once,
+       -50% of the total track width is exactly one set of items. 
+    */
+    transform: translateX(-50%);
+  }
+}
+
+@keyframes marquee-reverse {
+  0% {
+    transform: translateX(-50%);
+  }
+  100% {
+    transform: translateX(0);
+  }
+}
+
+.marquee-container:hover .marquee-track-reverse {
+  animation-play-state: paused;
+}
+
+.links {
+  margin-top: 0.8rem; /* Reduced from 1rem to bring closer */
+  display: grid;
+  gap: 0.8rem;
+  width: 100%;
+}
+
+.featured-image {
+  width: 100%;
+  height: auto;
+  border-radius: var(--radius-md);
+  margin-top: 1rem;
+  display: block;
+  /* Removed box-shadow to avoid frame effect */
+}
+
+.card {
+  display: flex;
+  align-items: center;
+  gap: 0.85rem;
+  border: 1px solid transparent;
+  border-radius: var(--radius-md);
+  padding: 0.88rem 0.9rem;
+  text-decoration: none;
+  color: var(--text);
+  background: #ffffff; /* Clean white card */
+  box-shadow: var(--shadow-sm);
+  transition: transform 180ms ease, border-color 180ms ease, box-shadow 180ms ease;
+}
+
+.card:hover,
+.card:focus-visible {
+  transform: translateY(-2px);
+  border-color: var(--primary-accent);
+  box-shadow: var(--shadow-lg);
+}
+
+.card:focus-visible {
+  outline: 2px solid var(--primary-accent);
+  outline-offset: 2px;
+}
+
+.card[data-accent="vendora"]:hover {
+  background: rgba(40, 194, 160, 0.05);
+  border-color: var(--vendora);
+}
+
+.card[data-accent="vinted"]:hover {
+  background: rgba(0, 119, 130, 0.05);
+  border-color: var(--vinted);
+}
+
+.card[data-accent="etsy"]:hover {
+  background: rgba(244, 107, 45, 0.05);
+  border-color: var(--etsy);
+}
+
+.card[data-accent="instagram"]:hover {
+  background: rgba(225, 48, 108, 0.05);
+  border-color: var(--instagram);
+}
+
+.card[data-accent="telegram"]:hover {
+  background: rgba(0, 136, 204, 0.05);
+  border-color: var(--telegram);
+}
+
+.card[data-accent="whatsapp"]:hover {
+  background: rgba(37, 211, 102, 0.05); /* --whatsapp */
+  border-color: var(--whatsapp);
+}
+
+.card[data-accent="viber"]:hover {
+  background: rgba(115, 96, 242, 0.05); /* --viber */
+  border-color: var(--viber);
+}
+
+.card[data-accent="phone"]:hover {
+  background: rgba(85, 85, 85, 0.05); /* --phone */
+  border-color: var(--phone);
+}
+
+.icon {
+  width: 2.5rem;
+  height: 2.5rem;
+  border-radius: 0.72rem;
+  display: grid;
+  place-items: center;
+  border: 1px solid var(--line);
+  background: #f0f0f0;
+  flex-shrink: 0;
+}
+
+.logo {
+  display: grid;
+  place-items: center;
+}
+
+.img-logo {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  border-radius: 6px; /* slightly round the icons */
+}
+
+/* Logos use inline images, so specific backgrounds might not be needed if images are transparent, 
+   but keeping them for fallback or style */
+.logo.vendora { background: transparent; }
+.logo.vinted { background: transparent; }
+.logo.etsy { background: transparent; }
+.logo.instagram { background: transparent; }
+.logo.telegram { background: transparent; }
+.logo.whatsapp { background: transparent; }
+.logo.viber { background: transparent; }
+.logo.phone { background: transparent; }
+
+.content {
+  display: grid;
+  gap: 0.15rem;
+  min-width: 0;
+  flex: 1;
+}
+
+.content strong {
+  font-family: "Plus Jakarta Sans", "Segoe UI", sans-serif;
+  letter-spacing: 0.01em;
+  font-size: 1rem;
+  color: var(--text);
+}
+
+.content small {
+  font-size: 0.82rem;
+  color: var(--muted);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.arrow {
+  font-size: 1.1rem;
+  color: var(--muted); /* Darker on light theme */
+  transition: transform 0.2s ease, color 0.2s ease;
+}
+
+.card:hover .arrow {
+  transform: translate(2px, -2px);
+  color: var(--text);
+}
+
+.footer {
+  margin-top: 1.2rem;
+  text-align: center;
+  color: var(--muted);
+  font-size: 0.82rem;
+}
+
+.footer p {
+  margin: 0.2rem 0;
+}
+
+.note {
+  color: #9aa4b5;
+}
+
+.reveal-up {
+  opacity: 0;
+  transform: translateY(12px);
+  animation: revealUp 0.55s ease forwards;
+}
+
+.links .reveal-up:nth-child(1) {
+  animation-delay: 0.06s;
+}
+
+.links .reveal-up:nth-child(2) {
+  animation-delay: 0.12s;
+}
+
+.links .reveal-up:nth-child(3) {
+  animation-delay: 0.18s;
+}
+
+.links .reveal-up:nth-child(5) {
+  animation-delay: 0.3s;
+}
+
+.links .reveal-up:nth-child(4) {
+  animation-delay: 0.24s;
+}
+
+@keyframes revealUp {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+@keyframes statusPulse {
+  0% {
+    box-shadow: 0 0 0 0 rgba(40, 194, 160, 0.7);
+  }
+  70% {
+    box-shadow: 0 0 0 6px rgba(40, 194, 160, 0);
+  }
+  100% {
+    box-shadow: 0 0 0 0 rgba(40, 194, 160, 0);
+  }
+}
+
+@keyframes btnPulse {
+  0% {
+    box-shadow: 0 0 0 0 rgba(204, 122, 80, 0.7);
+  }
+  70% {
+    box-shadow: 0 0 0 6px rgba(204, 122, 80, 0);
+  }
+  100% {
+    box-shadow: 0 0 0 0 rgba(204, 122, 80, 0);
+  }
+}
+
+@keyframes floatBounce {
+  0%, 100% {
+      transform: translateY(0);
+  }
+  50% {
+      transform: translateY(-4px);
+  }
+}
+
+.card:hover .img-logo {
+  animation: floatBounce 2s ease-in-out infinite;
+}
+
+@media (max-width: 640px) {
+  .page {
+    width: min(var(--max-width), calc(100% - 1.2rem));
+    padding-top: 2.3rem;
+  }
+
+  .profile {
+    padding: 1rem;
+  }
+
+  .card {
+    padding: 0.8rem;
+  }
+
+  .cta {
+    width: 100%;
+    text-align: center;
+  }
+
+  .content small {
+    white-space: normal;
+    overflow: visible;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .reveal-up,
+  .links .reveal-up:nth-child(1),
+  .links .reveal-up:nth-child(2),
+  .links .reveal-up:nth-child(3),
+  .links .reveal-up:nth-child(4) {
+    animation: none;
+    opacity: 1;
+    transform: none;
+  }
+
+  .card {
+    transition: none;
+  }
+}
+
+.developer-signature {
+    /* cursor: url('img/dev-icon.svg') 5 5, auto; */
+    font-size: 0.8rem;
+    opacity: 0.7;
+    margin-top: 5px;
+    transition: opacity 0.3s ease;
+    position: relative;
+    display: inline-block;
+    color: var(--muted);
+}
+
+.developer-signature:hover {
+    opacity: 1;
+    animation-duration: 1.5s;
+}
+
+/* Developer Signature Icon Animation */
+.developer-signature i {
+    display: inline-block;
+    color: inherit;
+    animation: iconPulse 2s ease-in-out infinite;
+}
+
+@keyframes iconPulse {
+    0%, 100% {
+        transform: scale(1);
+        opacity: 0.7;
+    }
+    50% {
+        transform: scale(1.1);
+        opacity: 1;
+    }
+}
+
+.developer-signature:hover i {
+    animation-duration: 0.8s;
+}
+/* --- New Additions for Share/Loader --- */
+
+/* Loader */
+.loader-overlay {
+  position: fixed;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  background: var(--bg);
+  z-index: 99999;
+  display: flex;
+  flex-direction: column; /* Changed to column to stack spinner and footer */
+  justify-content: center;
+  align-items: center;
+  transition: opacity 0.5s ease, visibility 0.5s ease;
+}
+
+.loader-footer {
+  position: absolute;
+  bottom: 2rem;
+  text-align: center;
+  font-size: 0.85rem;
+  color: var(--muted);
+  opacity: 0.8;
+  display: flex;
+  flex-direction: column;
+  gap: 0.3rem;
+  width: 100%;
+}
+
+.loader-footer p {
+  margin: 0;
+}
+
+.loader-overlay.hidden {
+  opacity: 0;
+  visibility: hidden;
+}
+
+.spinner-container {
+  position: relative;
+  width: 140px;
+  height: 140px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.spinner-logo {
+  width: 90px;
+  height: 90px;
+  border-radius: 50%;
+  object-fit: cover;
+  animation: pulseLogo 1.5s ease-in-out infinite;
+  z-index: 10;
+}
+
+.spinner-ring {
+  position: absolute;
+  inset: 0;
+  border: 4px solid rgba(204, 122, 80, 0.1);
+  border-top-color: var(--primary-accent);
+  border-radius: 50%;
+  animation: spinner 1s linear infinite;
+}
+
+@keyframes pulseLogo {
+  0%, 100% { transform: scale(0.95); opacity: 0.8; }
+  50% { transform: scale(1.05); opacity: 1; }
+}
+
+@keyframes spinner {
+  to { transform: rotate(360deg); }
+}
+
+/* Share Button */
+.share-btn {
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+  background: rgba(255, 255, 255, 0.05); /* Same as chips */
+  border: 1px solid var(--line);
+  color: var(--muted);
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  display: grid;
+  place-items: center;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  z-index: 10;
+}
+
+.share-btn:hover {
+  background: var(--vendora); /* Brand color on hover */
+  color: #091214;
+  border-color: transparent;
+  transform: scale(1.1);
+}
+
+/* Share Modal */
+dialog.share-modal {
+  padding: 0;
+  border: none;
+  background: transparent;
+  width: 100%;
+  height: 100%;
+  max-width: none;
+  max-height: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  margin: 0;
+  z-index: 999;
+  display: none; /* Controlled by JS/HTML attribute */
+}
+
+dialog.share-modal[open] {
+  display: grid;
+  place-items: center;
+}
+
+dialog::backdrop {
+    background: rgba(0, 0, 0, 0.4);
+    backdrop-filter: blur(2px);
+  }
+
+  .modal-content {
+    background: var(--surface);
+    border: 1px solid var(--line);
+    padding: 2rem;
+    border-radius: var(--radius-lg);
+    text-align: center;
+    position: relative;
+    width: min(90%, 320px);
+    box-shadow: var(--shadow-lg);
+    color: var(--text);
+    animation: modalPop 0.3s cubic-bezier(0.18, 0.89, 0.32, 1.28);
+  }
+
+  @keyframes modalPop {
+  from { transform: scale(0.8); opacity: 0; }
+  to { transform: scale(1); opacity: 1; }
+}
+
+.modal-close {
+  position: absolute;
+  top: 0.5rem;
+  right: 0.8rem;
+  font-size: 1.5rem;
+  color: var(--muted);
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 0.2rem;
+}
+
+.modal-close:hover {
+  color: var(--primary-accent);
+}
+
+.qr-container {
+  background: var(--surface-strong);
+  border-radius: 12px;
+  display: inline-block;
+  margin: 1rem 0;
+}
+
+.qr-code {
+  width: 140px;
+  height: 140px;
+  display: block;
+}
+
+.modal-text {
+  font-size: 0.9rem;
+  color: var(--muted);
+  margin-bottom: 1.2rem;
+}
+
+.share-actions {
+  display: flex;
+  gap: 0.8rem;
+  justify-content: center;
+}
+
+.share-action-btn {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  padding: 0.6rem;
+  border-radius: 8px;
+  background: var(--surface-strong);
+  border: 1px solid var(--line);
+  color: var(--text);
+  font-family: inherit; /* Inherit font-family for buttons */
+  font-size: 0.85rem;
+  cursor: pointer;
+  text-decoration: none;
+  transition: all 0.2s ease;
+}
+
+.share-action-btn:hover {
+  background: var(--secondary-accent);
+  border-color: var(--primary-accent);
+  color: #fff;
+}
+
+/* --- Carousel --- */
+.carousel-container {
+    position: relative;
+    width: 100%;
+    margin-top: 2rem;
+    overflow: hidden;
+    border-radius: var(--radius-md);
+    /* box-shadow removed as per request */
+    aspect-ratio: 1/1; /* Square to fit more image content */
+}
+
+.carousel-track {
+    display: flex;
+    transition: transform 0.5s ease-in-out;
+    height: 100%;
+    width: 100%;
+}
+
+.carousel-slide {
+    min-width: 100%;
+    height: 100%;
+    flex-shrink: 0;
+}
+
+.carousel-image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+    border-radius: var(--radius-md); /* Add radius directly to image if container's overflow handles it, but good to be safe if shadow removed from container */
+}
+
+/* Carousel Buttons */
+.carousel-btn {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background: rgba(255, 255, 255, 0.4); 
+    backdrop-filter: blur(4px);
+    border: 1px solid rgba(255, 255, 255, 0.6);
+    color: var(--text);
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    z-index: 10;
+    transition: all 0.3s ease;
+}
+
+.carousel-btn:hover {
+    background: rgba(255, 255, 255, 0.9);
+    transform: translateY(-50%) scale(1.1);
+    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+}
+
+.prev-btn { left: 16px; }
+.next-btn { right: 16px; }
+
+/* Carousel Dots */
+.carousel-dots {
+    position: absolute;
+    bottom: 16px;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    gap: 8px;
+    z-index: 10;
+    padding: 6px 10px;
+    background: rgba(0, 0, 0, 0.2); 
+    backdrop-filter: blur(4px);
+    border-radius: 20px;
+}
+
+.carousel-dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.5);
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.carousel-dot.active {
+    background: #fff;
+    transform: scale(1.2);
+}
+
